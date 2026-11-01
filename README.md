@@ -63,3 +63,25 @@ One file, or one test by name:
 flutter test test/cart_calculator_test.dart
 flutter test --name "delivery is free"
 ```
+
+## Screenshots
+
+Signed in as Emily.
+
+![Signed in catalog](screenshots/login.png)
+
+Cart with the quantity, the discount, and the delivery fee.
+
+![Cart](screenshots/cart.png)
+
+Offline. The cached profile and the cached products stay on screen, and the cart is still there.
+
+![Offline catalog](screenshots/offline.png)
+
+## Time
+
+About 9 to 10 hours. I did this after work, in a rush.
+
+## Incomplete requirements
+
+I built the behavior the brief asks for. Because it was done in a hurry after work, I may have missed something small. I did not leave a required flow unimplemented on purpose.
