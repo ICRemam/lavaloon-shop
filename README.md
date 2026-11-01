@@ -1,5 +1,7 @@
 # Lavaloon Shop
 
+I used an AI assistant on this project for repetitive files, this README, autocomplete, and for looking up errors while I was stuck. The structure of the code comes from shopping and POS apps I have built and maintained before, which is why I could move faster. I reviewed what went in, and the result is mine.
+
 A small shopping app for the Lavaloon Flutter assessment. It signs in against DummyJSON, browses products, and keeps a cart on the device for each user. Placing an order sends that cart to `POST /carts/add`.
 
 ## Setup
