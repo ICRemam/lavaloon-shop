@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lavaloon_assessment/presentation/shared_cubits/auth/auth_cubit.dart';
 import 'package:lavaloon_assessment/presentation/shared_cubits/cart/cart_cubit.dart';
 import 'package:lavaloon_assessment/presentation/shared_cubits/product_details/product_details_cubit.dart';
 import 'package:lavaloon_assessment/presentation/shared_cubits/product_details/product_details_state.dart';
@@ -63,7 +64,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       constraints: const BoxConstraints(maxWidth: 1000),
                       child: LayoutBuilder(
                         builder: (context, constraints) {
-                          final gallery = ProductGallery(key: ValueKey(product.id), images: product.gallery, live: !state.isFromCache);
+                          final liveImages = !context.watch<AuthCubit>().state.isOfflineSession || !state.isFromCache;
+                          final gallery = ProductGallery(key: ValueKey(product.id), images: product.gallery, live: liveImages);
                           final info = ProductInfo(product: product);
 
                           if (constraints.maxWidth >= 720) {

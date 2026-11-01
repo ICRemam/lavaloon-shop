@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lavaloon_assessment/business_layer/controllers/cart_calculator.dart';
+import 'package:lavaloon_assessment/presentation/shared_cubits/auth/auth_cubit.dart';
 import 'package:lavaloon_assessment/data/models/cart_item.dart';
 import 'package:lavaloon_assessment/presentation/config/color_schemes.dart';
 import 'package:lavaloon_assessment/presentation/shared_widgets/price_view.dart';
@@ -43,7 +45,14 @@ class CartItemTile extends StatelessWidget {
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
-                    child: SizedBox(width: 72, height: 72, child: ProductImage(url: item.product.mainImage)),
+                    child: SizedBox(
+                      width: 72,
+                      height: 72,
+                      child: ProductImage(
+                        url: item.product.mainImage,
+                        live: !context.watch<AuthCubit>().state.isOfflineSession,
+                      ),
+                    ),
                   ),
                   const SizedBox(width: 12),
                   Expanded(

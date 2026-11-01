@@ -15,6 +15,7 @@ class ProductImage extends StatelessWidget {
     return Image.network(
       imageUrl,
       key: ValueKey('$imageUrl-$live'),
+      headers: live ? const {'Cache-Control': 'no-cache'} : null,
       fit: fit,
       width: double.infinity,
       height: double.infinity,

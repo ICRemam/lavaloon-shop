@@ -101,7 +101,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
         _fillViewportIfNeeded();
       },
       builder: (context, state) {
-        return Scaffold(
+        return BlocListener<AuthCubit, AuthState>(
+          listenWhen: (previous, current) => previous.isOfflineSession && !current.isOfflineSession && state.isFromCache,
+          listener: (context, authState) => unawaited(_cubit.refresh()),
+          child: Scaffold(
           appBar: AppBar(
             title: const Text('Products'),
             actions: [
@@ -145,6 +148,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
               ),
             ),
           ),
+          ),
         );
       },
     );
@@ -186,6 +190,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
   Widget _buildProducts(CatalogState state) {
     final products = state.products;
+    final liveImages = !context.watch<AuthCubit>().state.isOfflineSession || !state.isFromCache;
 
     return CustomScrollView(
       controller: _scrollController,
@@ -205,7 +210,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                     (context, index) => ProductCard(
                       product: products[index],
                       viewMode: state.viewMode,
-                      liveImages: !state.isFromCache,
+                      liveImages: liveImages,
                       onTap: () => _openProduct(products[index]),
                     ),
                     childCount: products.length,
@@ -220,7 +225,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                       child: ProductCard(
                         product: products[index],
                         viewMode: state.viewMode,
-                        liveImages: !state.isFromCache,
+                        liveImages: liveImages,
                         onTap: () => _openProduct(products[index]),
                       ),
                     ),
