@@ -68,6 +68,10 @@ flutter test --name "delivery is free"
 
 ## Screenshots
 
+The login screen, with the test account under the button.
+
+![Login](screenshots/sign-in.png)
+
 Signed in as Emily.
 
 ![Signed in catalog](screenshots/login.png)
