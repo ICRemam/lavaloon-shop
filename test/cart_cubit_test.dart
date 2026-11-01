@@ -16,7 +16,6 @@ import 'package:lavaloon_assessment/data/models/auth_response.dart';
 import 'package:lavaloon_assessment/presentation/shared_cubits/auth/auth_cubit.dart';
 import 'package:lavaloon_assessment/presentation/shared_cubits/auth/auth_state.dart';
 import 'package:lavaloon_assessment/presentation/shared_cubits/cart/cart_cubit.dart';
-import 'package:lavaloon_assessment/presentation/shared_cubits/cart/cart_state.dart';
 
 import 'support/fakes.dart';
 import 'support/fixtures.dart';
